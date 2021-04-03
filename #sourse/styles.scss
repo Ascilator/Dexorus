@@ -835,7 +835,11 @@ h2.block_title {
 				}
 			}
 			@media screen and (max-width: 900px) {
+				bottom: 0;
 			}
+		}
+		@media screen and (max-width: 900px) {
+			padding-bottom: 30px;
 		}
 	}
 	@media screen and (max-width: 900px) {

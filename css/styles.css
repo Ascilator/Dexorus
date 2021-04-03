@@ -1075,6 +1075,18 @@ h2.block_title {
 }
 
 @media screen and (max-width: 900px) {
+  .main .slider_cont .slider_main_controls {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .main .slider_cont {
+    padding-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
   .main {
     padding-top: 98px;
   }
