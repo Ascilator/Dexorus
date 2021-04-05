@@ -185,6 +185,9 @@ h2.block_title {
 		}
 		.logo {
 			margin-right: auto;
+			img {
+				width: 160px;
+			}
 			@media screen and (max-width: 900px) {
 				img {
 					width: 160px;

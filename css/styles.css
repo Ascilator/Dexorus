@@ -226,6 +226,10 @@ h2.block_title {
   margin-right: auto;
 }
 
+.header .upper_part .logo img {
+  width: 160px;
+}
+
 @media screen and (max-width: 900px) {
   .header .upper_part .logo img {
     width: 160px;
