@@ -1060,6 +1060,10 @@ h2.block_title {
   padding-left: 10%;
 }
 
+.main .slider_cont .slider_item._3 img {
+  max-width: 100%;
+}
+
 .main .slider_cont .slider_item._3 .wrapper {
   padding-right: 0%;
 }
