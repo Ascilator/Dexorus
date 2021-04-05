@@ -1080,6 +1080,7 @@ h2.block_title {
 .main .slider_cont .slider_main_controls {
   position: relative;
   bottom: 35px;
+  z-index: 1001;
 }
 
 .main .slider_cont .slider_main_controls ul {
@@ -1091,11 +1092,13 @@ h2.block_title {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 -15px;
+  z-index: 1001;
 }
 
 .main .slider_cont .slider_main_controls ul li {
   margin: 0 15px;
   position: relative;
+  cursor: pointer;
 }
 
 .main .slider_cont .slider_main_controls ul li button {
@@ -1105,7 +1108,7 @@ h2.block_title {
   height: 12px;
   border-radius: 50%;
   background: #000000;
-  border: 1.5px solid #000000;
+  border: none;
   cursor: pointer;
 }
 
@@ -1134,14 +1137,12 @@ h2.block_title {
 .main .slider_cont .slider_main_controls ul li.slick-active button:after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  top: 3px;
+  left: 3px;
   border-radius: 50%;
   background: #fff;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   display: block;
 }
 

@@ -77,6 +77,12 @@
     document.querySelectorAll('.slick-dots>li').forEach(el => {
         el.innerHTML += '<canvas></canvas>'
     })
+
+
+    let interval;
+    let angle = 0;
+    let step = Math.PI / 180;
+    let bool = false;
     $('.slider_body').on('afterChange', function (event, slick, currentSlide, nextSlide) {
 
         var canvas = document.querySelectorAll('.slick-dots>li>canvas')[currentSlide];
@@ -84,8 +90,8 @@
         canvas.width = 12;
         canvas.height = 12;
 
-        let angle = 0;
-        let step = Math.PI / 180;
+        angle = 0;
+        step = Math.PI / 180;
 
 
         ctx.beginPath();
@@ -96,11 +102,11 @@
         ctx.arc(6, 6, 3, 0, angle);
         ctx.stroke();
 
-
-        let interval = setInterval(function () {
+        clearInterval(interval)
+        interval = setInterval(function () {
 
             if (angle <= 2 * Math.PI) {
-                write(angle);
+                write(angle, ctx);
                 angle += step;
             } else {
 
@@ -112,20 +118,48 @@
                 }
                 clearInterval(interval);
             }
-        }, 10)
+        }, 20)
 
-        function write(angle) {
-            ctx.beginPath();
-            ctx.fillStyle = '#fff';
-            ctx.fill();
-            ctx.lineWidth = 6;
-            ctx.strokeStyle = '#fff';
-            ctx.arc(6, 6, 3, 0, angle);
-            ctx.stroke();
+
+
+        if (!bool) {
+            slider_hover(ctx);
+            bool = true;
         }
-
-
     });
+    function write(angle, ctx) {
+        ctx.beginPath();
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = '#fff';
+        ctx.arc(6, 6, 3, 0, angle);
+        ctx.stroke();
+    }
+    function slider_hover(ctx) {
+        var slider = document.querySelector('.slider_body._main');
+        slider.addEventListener('mouseenter', function () {
+            clearInterval(interval);
+        })
+        slider.addEventListener('mouseleave', function () {
+            console.log('mouseleave');
+            interval = setInterval(function () {
+                if (angle <= 2 * Math.PI) {
+                    write(angle, ctx);
+                    angle += step;
+                } else {
+
+
+                    if ($('.slider_body').slick('slickCurrentSlide') == 2) {
+                        $('.slider_body').slick('slickGoTo', 0);
+                    } else {
+                        $('.slider_body').slick('slickNext');
+                    }
+                    clearInterval(interval);
+                }
+            }, 20)
+        })
+    }
     let inputs = document.querySelectorAll('input');
     for (let input of inputs) {
         input.addEventListener('keydown', function () {
