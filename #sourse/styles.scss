@@ -180,7 +180,7 @@ h2.block_title {
 			padding-right: 41px;
 			padding-left: 16px;
 			@media screen and (max-width: 900px) {
-				padding: 37px 16px 25px;
+				padding: 12px 16px;
 			}
 		}
 		.logo {
@@ -209,6 +209,9 @@ h2.block_title {
 				border-radius: 24px;
 				transition: 0.3s;
 				&:nth-child(1) {
+					img {
+						transform: translate(-1px, 0px);
+					}
 					&:hover {
 						background: #419fd9;
 					}
@@ -219,6 +222,9 @@ h2.block_title {
 					}
 				}
 				&:nth-child(3) {
+					img {
+						transform: translate(0px, 1px);
+					}
 					&:hover {
 						background: #5181b8;
 					}
@@ -410,9 +416,16 @@ h2.block_title {
 						margin-left: 9px;
 						opacity: 0.3;
 						transition: 0.3s;
+						@media screen and (max-width: 900px) {
+							width: 15px;
+							img {
+								width: 100%;
+							}
+						}
 					}
 					&._active {
 						.arrow {
+							opacity: 1;
 							transform: rotate(180deg) !important;
 						}
 					}
@@ -437,6 +450,11 @@ h2.block_title {
 							padding: 8px;
 							white-space: nowrap;
 							display: block;
+							transition: 0.3s;
+							border-radius: 4px;
+							&:hover {
+								background: #f2f2f2;
+							}
 							@media screen and (max-width: 900px) {
 								padding: 4px 25px;
 								font-size: 18px;
@@ -597,14 +615,14 @@ h2.block_title {
 			position: fixed;
 			top: 100%;
 			transition: 0.3s;
-			height: calc(100% - 97px);
+			height: calc(100% - 60px);
 			overflow: auto;
 			width: 100%;
 			background: #fff;
 			padding-top: 0;
 			padding: 0 16px;
 			&._active {
-				top: 97px;
+				top: 60px;
 			}
 		}
 	}
@@ -612,6 +630,8 @@ h2.block_title {
 
 .main {
 	padding-top: 108px;
+	position: relative;
+	z-index: 2;
 	.slider_cont {
 		background: #c4c4c416;
 		position: relative;
@@ -669,6 +689,14 @@ h2.block_title {
 					align-items: center;
 					.btn_item {
 						margin-right: 16px;
+						&:first-child {
+							.inside {
+								background: #0000;
+								.text {
+									color: #ffffff;
+								}
+							}
+						}
 						@media screen and (max-width: 900px) {
 							flex: 0 1 50%;
 							font-size: 16px;
@@ -676,6 +704,13 @@ h2.block_title {
 								padding: 12px 15px;
 							}
 						}
+						@media screen and (max-width: 500px) {
+							margin-right: 0;
+							margin-bottom: 8px;
+						}
+					}
+					@media screen and (max-width: 500px) {
+						display: block;
 					}
 				}
 				@media screen and (max-width: 900px) {
@@ -718,6 +753,8 @@ h2.block_title {
 				.front {
 					position: relative;
 					z-index: 1;
+					transform: translate(0, 50px);
+					transition: 0.3s;
 					@media screen and (max-width: 900px) {
 						height: 100%;
 					}
@@ -777,6 +814,14 @@ h2.block_title {
 					}
 				}
 			}
+			&.slick-current {
+				.img_part {
+					.front {
+						transform: translate(0, 0px);
+						transition: 0.3s;
+					}
+				}
+			}
 		}
 		.slider_main_controls {
 			position: relative;
@@ -788,6 +833,7 @@ h2.block_title {
 				margin: 0 -15px;
 				li {
 					margin: 0 15px;
+					position: relative;
 					button {
 						font-size: 0;
 						display: block;
@@ -798,7 +844,20 @@ h2.block_title {
 						border: 1.5px solid #000000;
 						cursor: pointer;
 					}
+					canvas {
+						position: absolute;
+						z-index: 10;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						opacity: 0;
+						transition: 0.3s;
+					}
 					&.slick-active {
+						canvas {
+							opacity: 1;
+						}
 						button {
 							border: none;
 							background: conic-gradient(
@@ -975,9 +1034,16 @@ h2.block_title {
 			margin: 0 5px;
 			cursor: pointer;
 			padding: 0 5px 0 0;
+			filter: grayscale(100%);
+			transition: 0.3s;
+			&:hover {
+				filter: grayscale(0%);
+			}
+		}
+		.arrow_prev {
+			transform: scale(-1, 1);
 		}
 		.arrow_next {
-			transform: scale(-1, 1);
 		}
 	}
 	@media screen and (max-width: 900px) {
@@ -1001,8 +1067,9 @@ h2.block_title {
 		align-items: stretch;
 		margin: 0 -16px;
 		@media screen and (max-width: 900px) {
-			margin: 0 -8px;
+			margin: -30px -16px;
 			overflow: auto;
+			padding: 30px 0;
 		}
 	}
 	.proposal_item {
@@ -1324,6 +1391,12 @@ h2.block_title {
 				margin-bottom: 9px;
 				font-weight: 500;
 				display: block;
+				transition: 0.3s;
+				&:hover {
+					background: linear-gradient(225.51deg, #0fa8e0 0.95%, #a0d126 98.98%);
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
 			}
 			.footer_link {
 				display: block;
@@ -1332,6 +1405,10 @@ h2.block_title {
 				color: #000000;
 				margin-bottom: 9px;
 				opacity: 0.5;
+				transition: 0.3s;
+				&:hover {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -1360,6 +1437,9 @@ h2.block_title {
 				border-radius: 24px;
 				transition: 0.3s;
 				&:nth-child(1) {
+					img {
+						transform: translate(-1px, 0px);
+					}
 					&:hover {
 						background: #419fd9;
 					}
@@ -1370,6 +1450,9 @@ h2.block_title {
 					}
 				}
 				&:nth-child(3) {
+					img {
+						transform: translate(0px, 1px);
+					}
 					&:hover {
 						background: #5181b8;
 					}
