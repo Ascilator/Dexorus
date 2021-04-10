@@ -760,9 +760,6 @@ h2.block_title {
 					z-index: 1;
 					transform: translate(0, 50px);
 					transition: 0.3s;
-					@media screen and (max-width: 900px) {
-						height: 100%;
-					}
 				}
 				@media screen and (max-width: 900px) {
 					flex: unset;
@@ -799,6 +796,9 @@ h2.block_title {
 						height: 100%;
 						object-fit: contain;
 					}
+					@media screen and (max-width: 900px) {
+						padding-bottom: 90%;
+					}
 				}
 				.img_part {
 					flex: 0 1 390px;
@@ -821,6 +821,9 @@ h2.block_title {
 						height: 100%;
 						object-fit: contain;
 					}
+					@media screen and (max-width: 900px) {
+						padding-bottom: 90%;
+					}
 				}
 				.text_part {
 					.title {
@@ -842,6 +845,23 @@ h2.block_title {
 			&._3 {
 				img {
 					max-width: 100%;
+				}
+				.front {
+					@media screen and (max-width: 900px) {
+						position: relative;
+						width: 100%;
+						padding-bottom: 90%;
+						img {
+							max-width: unset;
+							position: absolute;
+							top: 0;
+							left: 50%;
+							transform: translate(-50%, 0);
+							width: 125%;
+							height: 100%;
+							object-fit: contain;
+						}
+					}
 				}
 				.wrapper {
 					padding-right: 0%;
@@ -2143,7 +2163,7 @@ h2.block_title {
 		}
 		.invest_btn {
 			max-width: 256px;
-			margin: 35px auto 0;
+			margin: 50px auto 0;
 			.inside {
 				background: #0000;
 				.text {
