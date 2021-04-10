@@ -83,6 +83,7 @@
     let angle = 0;
     let step = Math.PI / 180;
     let bool = false;
+    let is_in_slider = false;
     $('.slider_body').on('afterChange', function (event, slick, currentSlide, nextSlide) {
 
         var canvas = document.querySelectorAll('.slick-dots>li>canvas')[currentSlide];
@@ -101,49 +102,10 @@
         ctx.strokeStyle = '#fff';
         ctx.arc(6, 6, 3, 0, angle);
         ctx.stroke();
-
-        clearInterval(interval)
-        interval = setInterval(function () {
-
-            if (angle <= 2 * Math.PI) {
-                write(angle, ctx);
-                angle += step;
-            } else {
-
-
-                if ($('.slider_body').slick('slickCurrentSlide') == 2) {
-                    $('.slider_body').slick('slickGoTo', 0);
-                } else {
-                    $('.slider_body').slick('slickNext');
-                }
-                clearInterval(interval);
-            }
-        }, 20)
-
-
-
-        if (!bool) {
-            slider_hover(ctx);
-            bool = true;
-        }
-    });
-    function write(angle, ctx) {
-        ctx.beginPath();
-        ctx.fillStyle = '#fff';
-        ctx.fill();
-        ctx.lineWidth = 6;
-        ctx.strokeStyle = '#fff';
-        ctx.arc(6, 6, 3, 0, angle);
-        ctx.stroke();
-    }
-    function slider_hover(ctx) {
-        var slider = document.querySelector('.slider_body._main');
-        slider.addEventListener('mouseenter', function () {
-            clearInterval(interval);
-        })
-        slider.addEventListener('mouseleave', function () {
-            console.log('mouseleave');
+        if (!is_in_slider) {
+            clearInterval(interval)
             interval = setInterval(function () {
+
                 if (angle <= 2 * Math.PI) {
                     write(angle, ctx);
                     angle += step;
@@ -158,6 +120,63 @@
                     clearInterval(interval);
                 }
             }, 20)
+        }
+        if (is_in_slider) {
+            ctx = document.querySelectorAll('.slick-dots>li>canvas')[currentSlide].getContext('2d');
+
+            slider_hover(ctx);
+        } else {
+            slider_hover(ctx);
+        }
+
+
+
+
+
+
+    });
+    function write(angle, ctx) {
+        ctx.beginPath();
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = '#fff';
+        ctx.arc(6, 6, 3, 0, angle);
+        ctx.stroke();
+    }
+
+    function slider_hover(ctx) {
+        var slider = document.querySelector('.slider_cont');
+
+
+
+
+        slider.addEventListener('mouseenter', function () {
+
+            if (!is_in_slider) {
+                clearInterval(interval);
+                is_in_slider = true;
+            }
+        })
+        slider.addEventListener('mouseleave', function () {
+            if (is_in_slider) {
+                interval = setInterval(function () {
+                    if (angle <= 2 * Math.PI) {
+                        write(angle, ctx);
+                        angle += step;
+                    } else {
+
+
+                        if ($('.slider_body').slick('slickCurrentSlide') == 2) {
+                            $('.slider_body').slick('slickGoTo', 0);
+                        } else {
+                            $('.slider_body').slick('slickNext');
+                        }
+                        clearInterval(interval);
+                    }
+                }, 20)
+                is_in_slider = false;
+            }
         })
     }
     let inputs = document.querySelectorAll('input');
@@ -184,4 +203,40 @@
 
     }
 
+
+    function catalog_btns() {
+        $('.show_more_btn').click(function () {
+            $(this).siblings('.labels_cont').children('.label_add_cont').slideToggle();
+            $(this).toggleClass('_active');
+            if ($(this).children('.text').text() === "Показать больше") {
+                $(this).children('.text').text("Cвернуть")
+            } else {
+                $(this).children('.text').text("Показать больше")
+            }
+        })
+    }
+    catalog_btns();
+    function dynamic_adaptiv() {
+        if ($('html').width() < 800) {
+            for (let i = 0; i < $('.right_item_part').length; i++) {
+                $('.right_item_part>.img').eq(0).prependTo($('.catalog_item').eq(i))
+                $('.right_item_part>.invest_btn').eq(0).insertAfter($('.catalog_item>.left_item_part>.labels_cont').eq(i))
+
+            }
+        }
+        $(window).resize(function () {
+            if ($('html').width() < 800) {
+                for (let i = 0; i < $('.right_item_part').length; i++) {
+                    $('.right_item_part>.img').eq(0).prependTo($('.catalog_item').eq(i))
+                    $('.right_item_part>.invest_btn').eq(0).insertAfter($('.catalog_item>.left_item_part>.labels_cont').eq(i))
+                }
+            } else {
+                for (let i = 0; i < $('.right_item_part').length; i++) {
+                    $('.catalog_item>.img').eq(0).appendTo($('.catalog_item>.right_item_part').eq(i))
+                    $('.invest_btn').eq(i).appendTo($('.catalog_item>.right_item_part').eq(i))
+                }
+            }
+        })
+    }
+    dynamic_adaptiv();
 });
