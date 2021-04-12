@@ -1871,7 +1871,7 @@ h2.block_title {
 					.inside {
 						padding: 10px 22px;
 					}
-					&:first-child {
+					&._active {
 						.inside {
 							background: #0000;
 							.text {
@@ -1902,8 +1902,8 @@ h2.block_title {
 							color: #000000;
 							.value {
 								padding: 15px 0 10px 15px;
-								width: 76%;
-								background: #e0e0e080;
+								position: relative;
+								z-index: 10;
 							}
 						}
 						.line {
@@ -1953,6 +1953,64 @@ h2.block_title {
 					}
 				}
 
+				.irs-grid,
+				.irs-min,
+				.irs-max,
+				.irs-from,
+				.irs-single {
+					display: none;
+				}
+				.irs-to,
+				.irs-handle.to {
+					opacity: 0;
+					top: 0;
+					transform: translate(0%, -50%);
+				}
+				.irs-line {
+					top: 0;
+					height: 3px;
+					margin: 0 8px;
+				}
+				.irs--flat {
+					height: auto;
+					margin: 0 -8px;
+				}
+				.irs-bar {
+					top: 0;
+					margin: -3px 0 0;
+					height: 3px;
+					background: #0000;
+					position: relative;
+					&:after {
+						content: "";
+						position: absolute;
+						width: 18px;
+						height: 18px;
+						top: 50%;
+						left: 100%;
+						transform: translate(-50%, -50%);
+						background: linear-gradient(225.51deg, #0fa8e0 0.95%, #a0d126 98.98%);
+						border: 5px solid #ffffff;
+						border-radius: 50%;
+						display: block;
+					}
+					&:before {
+						background: linear-gradient(225.51deg, #0fa8e0 0.95%, #a0d126 98.98%);
+						border-radius: 3px;
+						content: "";
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: calc(100%);
+						height: 66px;
+						border-top: 63px solid #e9e9e9;
+
+						display: block;
+					}
+				}
+				.irs-handle.from {
+					display: none;
+				}
 				@media screen and (max-width: 800px) {
 					display: block;
 					margin-top: 33px;

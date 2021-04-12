@@ -2414,11 +2414,11 @@ h2.block_title {
   padding: 10px 22px;
 }
 
-.main_catalog_screen .content_box .left_part .tags .tag_item:first-child .inside {
+.main_catalog_screen .content_box .left_part .tags .tag_item._active .inside {
   background: #0000;
 }
 
-.main_catalog_screen .content_box .left_part .tags .tag_item:first-child .inside .text {
+.main_catalog_screen .content_box .left_part .tags .tag_item._active .inside .text {
   color: #ffffff;
 }
 
@@ -2458,8 +2458,8 @@ h2.block_title {
 
 .main_catalog_screen .content_box .left_part .stat_part .stat_item .line_cont .gray_back .value {
   padding: 15px 0 10px 15px;
-  width: 76%;
-  background: #e0e0e080;
+  position: relative;
+  z-index: 10;
 }
 
 .main_catalog_screen .content_box .left_part .stat_part .stat_item .line_cont .line {
@@ -2511,6 +2511,73 @@ h2.block_title {
   .main_catalog_screen .content_box .left_part .stat_part .stat_item {
     margin-bottom: 20px;
   }
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-grid,
+.main_catalog_screen .content_box .left_part .stat_part .irs-min,
+.main_catalog_screen .content_box .left_part .stat_part .irs-max,
+.main_catalog_screen .content_box .left_part .stat_part .irs-from,
+.main_catalog_screen .content_box .left_part .stat_part .irs-single {
+  display: none;
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-to,
+.main_catalog_screen .content_box .left_part .stat_part .irs-handle.to {
+  opacity: 0;
+  top: 0;
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-line {
+  top: 0;
+  height: 3px;
+  margin: 0 8px;
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs--flat {
+  height: auto;
+  margin: 0 -8px;
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-bar {
+  top: 0;
+  margin: -3px 0 0;
+  height: 3px;
+  background: #0000;
+  position: relative;
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-bar:after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: linear-gradient(225.51deg, #0fa8e0 0.95%, #a0d126 98.98%);
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+  display: block;
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-bar:before {
+  background: linear-gradient(225.51deg, #0fa8e0 0.95%, #a0d126 98.98%);
+  border-radius: 3px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100%);
+  height: 66px;
+  border-top: 63px solid #e9e9e9;
+  display: block;
+}
+
+.main_catalog_screen .content_box .left_part .stat_part .irs-handle.from {
+  display: none;
 }
 
 @media screen and (max-width: 800px) {

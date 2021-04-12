@@ -203,7 +203,25 @@
 
     }
 
+    function tabs() {
+        $('.tab_body_cont').not($('.tab_body_cont').eq(0)).hide();
+        $('.tab_result').not($('.tab_result').eq(0)).hide();
 
+
+        $('.tab_link').click(function () {
+            $('.tab_link').not(this).removeClass('_active');
+            $('.tab_body_cont').not($('.tab_body_cont').eq($(this).index())).hide();
+            $('.tab_result').not($('.tab_result').eq($(this).index())).hide();
+
+
+
+            $('.tab_result').eq($(this).index()).fadeIn();
+            $('.tab_body_cont').eq($(this).index()).fadeIn();
+            $(this).addClass('_active');
+
+
+        })
+    }
     function catalog_btns() {
         $('.show_more_btn').click(function () {
             $(this).siblings('.labels_cont').children('.label_add_cont').slideToggle();
@@ -238,5 +256,105 @@
             }
         })
     }
+    function range_calc() {
+        let sliders = $('.js-range-slider');
+        let labels = $('.tab_result');
+
+        const stonk_koeff = [
+            0.0037,
+            0.0049,
+            0.0064
+        ];
+        const val = [
+            {
+                min: 100,
+                max: 2999,
+            },
+            {
+                min: 1,
+                max: 365,
+            },
+            {
+                min: 3000,
+                max: 8499,
+            },
+            {
+                min: 1,
+                max: 365,
+            },
+            {
+                min: 8500,
+                max: 30000,
+            },
+            {
+                min: 1,
+                max: 365,
+            },
+        ]
+        for (let i = 0; i < sliders.length; i++) {
+            if (i % 2 === 1) {
+                createSlider(sliders.eq(i), val[i], true, i);
+
+            } else {
+                createSlider(sliders.eq(i), val[i], false, i);
+                setLabelText(labels.eq(Math.floor(i / 2)), val[i], i / 2);
+            }
+        }
+        function setLabelText(label, { _, max }, i) {
+            let stonk_text = Math.round(max * .7 + stonk_koeff[i] * 365 * 0.7);
+            label.children('.box_cont').children('.block_desc').children('span').text(stonk_text)
+        }
+        function getLabelText(data_value, slider_data, i) {
+            let date_value = +data_value.split('').filter(el => {
+                return el !== ' ' && el !== '$' && el !== 'д' && el !== 'е' && el !== 'н' && el !== 'й'
+            }).join('');
+
+            let price_value = +slider_data.split('').filter(el => {
+                return el !== ' ' && el !== '$' && el !== 'д' && el !== 'е' && el !== 'н' && el !== 'й'
+            }).join('');
+
+
+            return Math.floor(price_value * date_value * stonk_koeff[i] + price_value);
+        }
+
+
+        function createSlider(slider, { min, max }, date = false, i) {
+            const input = slider.siblings('.line_cont').children('.gray_back').children();
+            slider.ionRangeSlider({
+                type: "double",
+                min: min,
+                max: max,
+                from: 0,
+                to: .7 * max,
+                postfix: "$",
+                onStart: function (data) {
+                    if (date) {
+                        input.text(data.to_pretty + ' дней');
+                        let where_text = labels.eq(Math.floor(i / 2)).children('.box_cont').children('.block_desc')
+                        where_text.text('$ ' + getLabelText(data.to_pretty, sliders.eq(i - 1).siblings('.line_cont').children('.gray_back').children().text(), Math.floor(i / 2)))
+                    } else {
+                        input.text(data.to_pretty + ' $');
+                        let where_text = labels.eq(Math.floor(i / 2)).children('.box_cont').children('.block_desc')
+                        where_text.text('$ ' + getLabelText(data.to_pretty, sliders.eq(i + 1).siblings('.line_cont').children('.gray_back').children().text(), Math.floor(i / 2)))
+                    }
+                },
+                onChange: function (data) {
+                    if (date) {
+                        input.text(data.to_pretty + ' дней');
+                        let where_text = labels.eq(Math.floor(i / 2)).children('.box_cont').children('.block_desc')
+                        where_text.text('$ ' + getLabelText(data.to_pretty, sliders.eq(i - 1).siblings('.line_cont').children('.gray_back').children().text(), Math.floor(i / 2)))
+                    } else {
+                        input.text(data.to_pretty + ' $');
+
+                        let where_text = labels.eq(Math.floor(i / 2)).children('.box_cont').children('.block_desc')
+                        where_text.text('$ ' + getLabelText(data.to_pretty, sliders.eq(i + 1).siblings('.line_cont').children('.gray_back').children().text(), Math.floor(i / 2)))
+                    }
+
+                }
+            });
+        }
+    }
+    range_calc();
     dynamic_adaptiv();
+    tabs();
 });

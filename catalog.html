@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="fonts/cofo/stylesheet.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
 	<title>Document</title>
 </head>
 
@@ -446,57 +448,112 @@
 		<main class="main">
 			<div class="main_catalog_screen">
 				<div class="wrapper">
-					<h1 class="page_title">Инвестиционно предложение</h1>
+					<h1 class="page_title">Инвестиционное предложение</h1>
 					<div class="content_box">
 						<div class="left_part">
 							<div class="tags">
-								<div class="tag_item  _radial_btn">
+								<div class="tag_item tab_link  _radial_btn _active">
 									<div class="inside">
 										<div class="text">Spot</div>
 									</div>
 								</div>
-								<div class="tag_item  _radial_btn">
+								<div class="tag_item tab_link  _radial_btn">
 									<div class="inside">
 										<div class="text">Margin</div>
 									</div>
 								</div>
-								<div class="tag_item  _radial_btn">
+								<div class="tag_item tab_link _radial_btn">
 									<div class="inside">
 										<div class="text">Futures</div>
 									</div>
 								</div>
 							</div>
-							<div class="stat_part">
-								<div class="stat_item">
-									<div class="item_title">Сумма</div>
-									<div class="line_cont">
-										<div class="gray_back">
-											<div class="value">$ 3 489</div>
+							<div class="tab_body">
+								<div class="stat_part tab_body_cont">
+									<div class="stat_item">
+										<div class="item_title">Сумма</div>
+										<div class="line_cont">
+											<div class="gray_back">
+												<div class="value">$ 3 489</div>
+											</div>
 										</div>
-										<div class="line">
-											<div class="value"></div>
+										<input type="text" class="js-range-slider" />
+									</div>
+									<div class="stat_item">
+										<div class="item_title">Срок</div>
+										<div class="line_cont">
+											<div class="gray_back">
+												<div class="value">295 дней</div>
+											</div>
 										</div>
+										<input type="text" class="js-range-slider" />
 									</div>
 								</div>
-								<div class="stat_item">
-									<div class="item_title">Срок</div>
-									<div class="line_cont">
-										<div class="gray_back">
-											<div class="value">295 дней</div>
+								<div class="stat_part tab_body_cont">
+									<div class="stat_item">
+										<div class="item_title">Сумма</div>
+										<div class="line_cont">
+											<div class="gray_back">
+												<div class="value">$ 3 489</div>
+											</div>
 										</div>
-										<div class="line">
-											<div class="value"></div>
+										<input type="text" class="js-range-slider" />
+									</div>
+									<div class="stat_item">
+										<div class="item_title">Срок</div>
+										<div class="line_cont">
+											<div class="gray_back">
+												<div class="value">295 дней</div>
+											</div>
 										</div>
+										<input type="text" class="js-range-slider" />
+									</div>
+								</div>
+								<div class="stat_part tab_body_cont">
+									<div class="stat_item">
+										<div class="item_title">Сумма</div>
+										<div class="line_cont">
+											<div class="gray_back">
+												<div class="value">$ 3 489</div>
+											</div>
+										</div>
+										<input type="text" class="js-range-slider" />
+									</div>
+									<div class="stat_item">
+										<div class="item_title">Срок</div>
+										<div class="line_cont">
+											<div class="gray_back">
+												<div class="value">295 дней</div>
+											</div>
+										</div>
+										<input type="text" class="js-range-slider" />
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="right_part">
-							<div class="box_cont">
-								<div class="block_title">Прибыль</div>
-								<div class="block_desc">$ 20 498</div>
-								<div class="invest_btn_">Инвестировать</div>
+							<div class="tab_result">
+								<div class="box_cont">
+									<div class="block_title">Прибыль</div>
+									<div class="block_desc">$ <span>20 498</span></div>
+									<div class="invest_btn_">Инвестировать</div>
+								</div>
 							</div>
+							<div class="tab_result">
+								<div class="box_cont">
+									<div class="block_title">Прибыль</div>
+									<div class="block_desc">$ <span>20 498</span></div>
+									<div class="invest_btn_">Инвестировать</div>
+								</div>
+							</div>
+							<div class="tab_result">
+								<div class="box_cont">
+									<div class="block_title">Прибыль</div>
+									<div class="block_desc">$ <span>20 498</span></div>
+									<div class="invest_btn_">Инвестировать</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -1287,6 +1344,7 @@
 
 
 	<script src="scripts/jquery-3.5.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
 	<script src="scripts/slick.min.js"></script>
 	<script src="scripts/scripts.js"></script>
 </body>
