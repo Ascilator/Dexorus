@@ -36,7 +36,7 @@
     })
     if ($('html').width() < 900) {
         $('.enter._header').appendTo($('.lower>.wrapper'))
-        $('.lang').appendTo($('.lower>.wrapper'))
+        $('.lang._header').appendTo($('.lower>.wrapper'))
         $('.number._header').appendTo($('.lower>.wrapper'))
         $('.socials._header').appendTo($('.lower>.wrapper'))
     }
@@ -44,14 +44,14 @@
     $(window).resize(function () {
         if ($('html').width() < 900) {
             $('.enter._header').appendTo($('.lower>.wrapper'))
-            $('.lang').appendTo($('.lower>.wrapper'))
+            $('.lang._header').appendTo($('.lower>.wrapper'))
             $('.number._header').appendTo($('.lower>.wrapper'))
             $('.socials._header').appendTo($('.lower>.wrapper'))
         } else {
             $('.socials._header').insertAfter($('.logo._main'))
             $('.number._header').insertAfter($('.socials._header'))
-            $('.lang').insertAfter($('.number._header'))
-            $('.enter._header').insertAfter($('.lang'))
+            $('.lang._header').insertAfter($('.number._header'))
+            $('.enter._header').insertAfter($('.lang._header'))
         }
     })
     $('.slider_body').slick({
@@ -62,6 +62,15 @@
         dots: true,
         fade: true,
         appendDots: $('.slider_main_controls'),
+
+    })
+    $('.slider_adv_body').slick({
+        slidesToScroll: 1,
+        arrows: true,
+        variableWidth: true,
+        infinite: false,
+        nextArrow: $('.slider_adv_cintrols>.arrow_next'),
+        prevArrow: $('.slider_adv_cintrols>.arrow_prev'),
 
     })
     $('.slider_body').slick('slickNext');
@@ -236,6 +245,7 @@
     catalog_btns();
     function dynamic_adaptiv() {
         if ($('html').width() < 800) {
+            $('.adv_footer').append($('.slider_adv_cintrols'))
             for (let i = 0; i < $('.right_item_part').length; i++) {
                 $('.right_item_part>.img').eq(0).prependTo($('.catalog_item').eq(i))
                 $('.right_item_part>.invest_btn').eq(0).insertAfter($('.catalog_item>.left_item_part>.labels_cont').eq(i))
@@ -244,11 +254,13 @@
         }
         $(window).resize(function () {
             if ($('html').width() < 800) {
+                $('.adv_footer').append($('.slider_adv_cintrols'))
                 for (let i = 0; i < $('.right_item_part').length; i++) {
                     $('.right_item_part>.img').eq(0).prependTo($('.catalog_item').eq(i))
                     $('.right_item_part>.invest_btn').eq(0).insertAfter($('.catalog_item>.left_item_part>.labels_cont').eq(i))
                 }
             } else {
+                $('.slider_adv_cintrols').appendTo($('._adv_header'))
                 for (let i = 0; i < $('.right_item_part').length; i++) {
                     $('.catalog_item>.img').eq(0).appendTo($('.catalog_item>.right_item_part').eq(i))
                     $('.invest_btn').eq(i).appendTo($('.catalog_item>.right_item_part').eq(i))
@@ -314,7 +326,7 @@
             }).join('');
 
 
-            return Math.floor(price_value * date_value * stonk_koeff[i] + price_value);
+            return Math.floor(price_value * date_value * stonk_koeff[i]);
         }
 
 
@@ -327,6 +339,7 @@
                 from: 0,
                 to: .7 * max,
                 postfix: "$",
+                from_fixed: true,
                 onStart: function (data) {
                     if (date) {
                         input.text(data.to_pretty + ' дней');
@@ -354,6 +367,52 @@
             });
         }
     }
+
+    function scroll() {
+        const year = document.querySelector('.year');
+        const next_year = document.querySelector('.next_year');
+
+        const years_item = document.querySelectorAll('.year_item');
+
+        const scroll_block = document.querySelector('.right_part_scroll');
+        scroll_block.addEventListener('scroll', function (e) {
+            if (document.documentElement.clientWidth > 600) {
+                let number;
+                let height = 0;
+                for (let i = 0; i < years_item.length; i++) {
+                    if (height < scroll_block.scrollTop) {
+                    } else {
+                        number = i;
+                        break;
+                    }
+                    height += years_item[i].getBoundingClientRect().height;
+                }
+                year.textContent = (2013 + number) || 2013;
+                next_year.textContent = (2014 + number) || 2014;
+            } else {
+
+                let number;
+                let width = 0;
+                for (let i = 0; i < years_item.length; i++) {
+                    if (width < scroll_block.scrollLeft) {
+                    } else {
+                        number = i - 1;
+                        break;
+                    }
+                    width += years_item[i].getBoundingClientRect().width;
+                }
+                if (number === -1) {
+                    number = 0
+                }
+                year.textContent = (2013 + number) || 2019;
+                next_year.textContent = (2014 + number) || 2020;
+            }
+        });
+    }
+
+
+
+    scroll();
     range_calc();
     dynamic_adaptiv();
     tabs();
