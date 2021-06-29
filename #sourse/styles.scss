@@ -4109,6 +4109,7 @@ button.mfp-arrow {
 					.item_row {
 						display: flex;
 						align-items: center;
+						justify-content: flex-start;
 						padding: 13px 0;
 						.icon {
 							margin-right: 25px;
@@ -4136,6 +4137,7 @@ button.mfp-arrow {
 							font-size: 16px;
 							line-height: 120%;
 							color: #000000;
+							white-space: nowrap;
 						}
 					}
 				}
@@ -4224,6 +4226,7 @@ button.mfp-arrow {
 					font-size: 16px;
 					line-height: 130%;
 					color: #000000;
+					padding-right: 16px;
 				}
 				@media screen and (max-width: 1150px) {
 					flex: 0 1 calc(50% - 34px);

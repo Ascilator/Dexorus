@@ -5595,6 +5595,9 @@ button.mfp-arrow.mfp-arrow-right:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding: 13px 0;
 }
 
@@ -5641,6 +5644,7 @@ button.mfp-arrow.mfp-arrow-right:before {
   font-size: 16px;
   line-height: 120%;
   color: #000000;
+  white-space: nowrap;
 }
 
 .big_tabs .wrapper .right_part .tab_body_cont .tab_footer {
@@ -5767,6 +5771,7 @@ button.mfp-arrow.mfp-arrow-right:before {
   font-size: 16px;
   line-height: 130%;
   color: #000000;
+  padding-right: 16px;
 }
 
 @media screen and (max-width: 1150px) {
