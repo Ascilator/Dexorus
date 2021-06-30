@@ -616,7 +616,7 @@
         if ($('html').width() < 1150) {
             if (sliderIsLive === false) {
                 slider.slick({
-                    infinite: true,
+                    infinite: false,
                     slidesToScroll: 1,
                     waitForAnimate: false,
                     speed: 300,
@@ -642,7 +642,7 @@
 
                 if (sliderIsLive === false) {
                     slider.slick({
-                        infinite: true,
+                        infinite: false,
                         slidesToScroll: 1,
                         waitForAnimate: false,
                         speed: 300,
