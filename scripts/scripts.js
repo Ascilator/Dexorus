@@ -244,6 +244,21 @@
 
 
         })
+
+
+        $('.tab_slider_link').click(function () {
+            $('.tab_slider_link').not(this).removeClass('_active');
+            $('.tab_body_cont').not($('.tab_body_cont').eq($(this).attr('index'))).hide();
+            $('.tab_result').not($('.tab_result').eq($(this).attr('index'))).hide();
+
+
+
+            $('.tab_result').eq($(this).attr('index')).fadeIn();
+            $('.tab_body_cont').eq($(this).attr('index')).fadeIn();
+            $(this).addClass('_active');
+
+
+        })
     }
     function catalog_btns() {
         $('.show_more_btn').click(function () {
@@ -594,6 +609,63 @@
             });
         }
     });
+    function adaptive_tabs() {
+        var slider = $('.tabs_slider');
+        var sliderIsLive = false;
+
+        if ($('html').width() < 1150) {
+            if (sliderIsLive === false) {
+                slider.slick({
+                    infinite: true,
+                    slidesToScroll: 1,
+                    waitForAnimate: false,
+                    speed: 300,
+                    easing: 'ease',
+                    prevArrow: false,
+                    arrows: false,
+                    variableWidth: true,
+                    centerMode: true,
+                    focusOnSelect: true,
+                });
+                sliderIsLive = true;
+            }
+
+        } else {
+
+            if (sliderIsLive === true) {
+                slider.slick('unslick');
+                sliderIsLive = false;
+            }
+        }
+        $(window).resize(function () {
+            if ($('html').width() < 1150) {
+
+                if (sliderIsLive === false) {
+                    slider.slick({
+                        infinite: true,
+                        slidesToScroll: 1,
+                        waitForAnimate: false,
+                        speed: 300,
+                        easing: 'ease',
+                        arrows: false,
+                        variableWidth: true,
+                        prevArrow: false,
+                        focusOnSelect: true,
+                        centerMode: true,
+                    });
+                    sliderIsLive = true;
+                }
+            } else {
+
+                if (sliderIsLive === true) {
+                    slider.slick('unslick');
+                    sliderIsLive = false;
+                }
+            }
+
+        });
+    }
+    adaptive_tabs();
     video_light_box();
     scroll();
     range_calc();

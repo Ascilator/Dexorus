@@ -4010,7 +4010,7 @@ button.mfp-arrow {
 			flex: 0 1 288px;
 			padding-right: 18px;
 			padding-top: 44px;
-			.tab_link {
+			.tab_slider_link {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
@@ -4079,10 +4079,11 @@ button.mfp-arrow {
 			}
 			@media screen and (max-width: 1150px) {
 				padding: 0;
-				display: flex;
-				align-items: center;
-				overflow: auto;
+				// display: flex;
+				// align-items: center;
+				//overflow: auto;
 				padding: 20px 0;
+				min-width: 0;
 			}
 		}
 		.right_part {
