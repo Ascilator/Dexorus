@@ -617,14 +617,15 @@
             if (sliderIsLive === false) {
                 slider.slick({
                     infinite: false,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
+                    slidesToShow: 2,
                     waitForAnimate: false,
                     speed: 300,
                     easing: 'ease',
                     prevArrow: false,
                     arrows: false,
                     variableWidth: true,
-                    centerMode: true,
+                    //centerMode: true,
                     focusOnSelect: true,
                 });
                 sliderIsLive = true;
