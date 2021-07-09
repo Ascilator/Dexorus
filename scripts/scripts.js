@@ -667,18 +667,19 @@
         });
     }
     function question_popup() {
-        document.querySelector('.question_icon').addEventListener('click', (e) => {
+        document.querySelector('.question_icon')?.addEventListener('click', (e) => {
             e.stopPropagation()
             document.querySelector('#popup').classList.add('_active');
         })
         document.addEventListener('click', (e) => {
             if (e.target !== document.querySelector('#popup')) {
-                if (document.querySelector('#popup').classList.contains('_active')) {
+                if (document.querySelector('#popup')?.classList.contains('_active')) {
                     document.querySelector('#popup').classList.remove('_active');
                 }
             }
         })
     }
+
     question_popup();
     adaptive_tabs();
     video_light_box();
