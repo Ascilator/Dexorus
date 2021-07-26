@@ -4752,6 +4752,7 @@ button.mfp-arrow {
                 .question_block {
                     position: relative;
                     .question_icon {
+                        cursor: pointer;
                     }
                     .popup {
                         position: absolute;
@@ -5470,13 +5471,30 @@ button.mfp-arrow {
                                 inset 4px 0px 0px #cef39f;
                             border-radius: 1px 8px 8px 1px;
                             margin-bottom: 10px;
+                            transition: 0.3s;
+                            cursor: pointer;
                             &._disabled {
                                 box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.05),
                                     inset 4px 0px 0px #e6e6e6;
+                                &:hover {
+                                    background: #fff;
+                                    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.05),
+                                        inset 4px 0px 0px #e6e6e6;
+                                }
                             }
                             &._blue {
                                 box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.05),
                                     inset 4px 0px 0px #83dab5;
+                                &:hover {
+                                    background: #dbf7eb;
+                                    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.05),
+                                        inset 4px 0px 0px #83dab5;
+                                }
+                            }
+                            &:hover {
+                                background: #f1ffdf;
+                                box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.05),
+                                    inset 4px 0px 0px #cef39f;
                             }
                         }
                         &:last-child {
