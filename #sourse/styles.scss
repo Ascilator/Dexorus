@@ -4029,11 +4029,13 @@ button.mfp-arrow {
                 transform: translate(-50%, -50%);
                 .item_1 {
                     position: absolute;
-                    top: 15%;
-                    left: 65%;
+                    top: 45%;
+                    left: 70%;
+                    z-index: 10;
+                    animation: paralax_reverse 3.5s ease infinite;
                     @media screen and (max-width: 1150px) {
-                        transform: scale(0.6);
-                        top: 25%;
+                        animation: mobile_paralax_reverse 3.5s ease infinite;
+                        top: 40%;
                         left: 65%;
                     }
                 }
@@ -4043,6 +4045,7 @@ button.mfp-arrow {
                     top: 15%;
                     animation: paralax_reverse 3.5s ease infinite;
                     @media screen and (max-width: 1150px) {
+                        display: none;
                         left: 75%;
                         top: 25%;
                         animation: mobile_paralax_reverse 3.5s ease infinite;
@@ -4050,15 +4053,16 @@ button.mfp-arrow {
                 }
                 .item_3 {
                     position: relative;
-                    transform: translate(0, 0);
+                    transform: translate(0, 5%);
                     @media screen and (max-width: 1150px) {
-                        transform: translate(10%, 15%) scale(0.6);
+                        transform: translate(10%, 5%) scale(0.6);
                     }
                 }
                 .item_4 {
                     position: absolute;
                     left: 75%;
-                    top: 85%;
+                    top: 60%;
+                    z-index: 20;
                     animation: paralax_reverse 3.5s ease infinite;
                     @media screen and (max-width: 1150px) {
                         left: 75%;
@@ -4068,22 +4072,22 @@ button.mfp-arrow {
                 }
                 .item_5 {
                     position: absolute;
-                    left: -10%;
-                    top: 25%;
+                    left: 12%;
+                    top: 50%;
                     animation: paralax_reverse 3.5s ease infinite;
                     @media screen and (max-width: 1150px) {
-                        left: 25%;
-                        top: 25%;
+                        left: 50%;
+                        top: 40%;
                         animation: mobile_paralax 3.5s ease infinite;
                     }
                 }
                 .item_6 {
                     position: absolute;
-                    left: -15%;
+                    left: 20%;
                     top: 26%;
                     animation: paralax 3.5s ease infinite;
                     @media screen and (max-width: 1150px) {
-                        left: 5%;
+                        left: 35%;
                         top: 35%;
                         animation: mobile_paralax 3.5s ease infinite;
                     }
