@@ -1456,6 +1456,11 @@ h2.block_title {
             margin-bottom: 32px;
         }
     }
+    .page_header {
+        @media screen and (max-width: 900px) {
+            display: block;
+        }
+    }
     .block_body {
         display: flex;
         align-items: center;
@@ -1518,8 +1523,10 @@ h2.block_title {
         .title {
             margin-bottom: 16px;
             font-size: 24px;
+            line-height: 30px;
             color: #000000;
             transition: 0.3s;
+            font-weight: 500;
         }
         .date {
             font-size: 16px;
@@ -5536,6 +5543,12 @@ button.mfp-arrow {
     justify-content: space-between;
     margin-bottom: 45px;
     .page_title {
+        @media screen and (max-width: 900px) {
+            font-size: 36px;
+            line-height: 45px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
     }
     .filters_btns {
         display: flex;
@@ -5550,6 +5563,14 @@ button.mfp-arrow {
                     }
                 }
             }
+            @media screen and (max-width: 900px) {
+                margin-right: 12px;
+                margin-left: 0;
+                flex: 0 0 auto;
+            }
+        }
+        @media screen and (max-width: 900px) {
+            overflow: auto;
         }
     }
 }
@@ -5608,6 +5629,11 @@ button.mfp-arrow {
                     font-size: 36px;
                     line-height: 45px;
                     font-weight: 500;
+                    @media screen and (max-width: 900px) {
+                        font-size: 24px;
+                        line-height: 30px;
+                        color: #000000;
+                    }
                 }
                 .date {
                     font-size: 16px;
@@ -5623,6 +5649,7 @@ button.mfp-arrow {
                 margin-bottom: 24px;
             }
             .desc_block {
+                margin-top: 48px;
                 .block_title {
                     margin-bottom: 24px;
                     font-size: 24px;
@@ -5649,8 +5676,10 @@ button.mfp-arrow {
                 font-size: 16px;
                 line-height: 20px;
                 color: #000000;
-                font-weight: 500;
                 margin-bottom: 14px;
+                @media screen and (max-width: 900px) {
+                    font-weight: 500;
+                }
             }
             .new_item {
                 display: flex;
@@ -5681,6 +5710,9 @@ button.mfp-arrow {
                         line-height: 20px;
                         color: #000000;
                         transition: 0.3s;
+                        @media screen and (max-width: 900px) {
+                            font-weight: 500;
+                        }
                     }
                     .date {
                         font-size: 16px;
@@ -5729,6 +5761,7 @@ button.mfp-arrow {
             flex: 0 1 672px;
             display: flex;
             flex-direction: column;
+            padding-top: 20px;
             .block_title {
                 font-size: 36px;
                 line-height: 45px;
@@ -5747,6 +5780,22 @@ button.mfp-arrow {
                     padding-bottom: 24px;
                     &.without_margin {
                         padding-bottom: 0;
+                    }
+                }
+                .number {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 12px;
+                    span {
+                        width: 26px;
+                        height: 26px;
+                        display: block;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: #f9f9f9;
+                        margin-right: 5px;
                     }
                 }
             }
@@ -5806,16 +5855,19 @@ button.mfp-arrow {
                 width: 100%;
                 object-fit: contain;
                 height: 100%;
+                @media screen and (max-width: 500px) {
+                    object-fit: cover;
+                }
             }
             @media screen and (max-width: 800px) {
                 max-width: 343px;
                 margin: 0 auto;
             }
             @media screen and (max-width: 500px) {
-                margin: 0 -16px;
-                width: calc(100% + 32px);
+                margin: 0;
+                width: 100%;
                 max-width: 375px;
-                height: 274px;
+                height: 256px;
             }
         }
         .invest_btn {
@@ -5840,6 +5892,9 @@ button.mfp-arrow {
         @media screen and (max-width: 500px) {
             margin-bottom: 0;
             background: #fff;
+
+            margin: 0 16px 20px;
+            border-radius: 10px;
         }
     }
 
@@ -5849,7 +5904,7 @@ button.mfp-arrow {
 
     @media screen and (max-width: 500px) {
         margin-top: 0;
-        background: #fff;
+        background: #f9f9f9;
         margin-bottom: 70px;
     }
 }
@@ -5885,17 +5940,29 @@ button.mfp-arrow {
                 background: #fff;
                 box-shadow: 0px 17px 20px rgba(0, 0, 0, 0.02);
                 border-radius: 16px;
+                @media screen and (max-width: 550px) {
+                    flex: 0 0 96px;
+                    margin-right: 26px;
+                    margin-bottom: 0;
+                }
             }
             .desc {
                 text-align: center;
                 font-size: 16px;
                 line-height: 150%;
+
+                @media screen and (max-width: 550px) {
+                    text-align: left;
+                }
             }
             @media screen and (max-width: 950px) {
                 margin: 0 10px 20px;
                 flex: 0 1 calc(50% - 20px);
             }
             @media screen and (max-width: 550px) {
+                display: flex;
+                align-items: center;
+                margin: 0 0 30px;
                 flex: 0 1 100%;
             }
         }
@@ -5909,6 +5976,9 @@ button.mfp-arrow {
             background: #fff;
             height: 2px;
             display: block;
+            @media screen and (max-width: 550px) {
+                display: none;
+            }
         }
         @media screen and (max-width: 950px) {
             flex-wrap: wrap;
@@ -5985,6 +6055,8 @@ button.mfp-arrow {
                     }
                     .persantage {
                         margin-top: 4px;
+                        flex: 0 0 50px;
+                        margin-left: 10px;
                     }
                     &:nth-child(1) {
                         .dot {
@@ -6026,6 +6098,7 @@ button.mfp-arrow {
 
             @media screen and (max-width: 950px) {
                 margin: 0 0 20px;
+                padding: 25px;
             }
         }
 
